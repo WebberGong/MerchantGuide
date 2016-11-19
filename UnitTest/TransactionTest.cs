@@ -1,4 +1,5 @@
 ﻿using MerchantGuide.Commodity;
+using MerchantGuide.Digit;
 using MerchantGuide.Numeral;
 using MerchantGuide.Transaction;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

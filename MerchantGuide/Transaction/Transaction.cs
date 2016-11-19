@@ -6,9 +6,9 @@ namespace MerchantGuide.Transaction
     /// <summary>
     ///     交易
     /// </summary>
-    public class Transaction<T> : IPrintable where T : Digit
+    public class Transaction<TDigit> : IPrintable where TDigit : Digit.Digit
     {
-        public Transaction(Commodity.Commodity commodity, Numeral<T> number)
+        public Transaction(Commodity.Commodity commodity, Numeral<TDigit> number)
         {
             Commodity = commodity;
             Number = number;
@@ -16,7 +16,7 @@ namespace MerchantGuide.Transaction
 
         public Commodity.Commodity Commodity { get; private set; }
 
-        public Numeral<T> Number { get; private set; }
+        public Numeral<TDigit> Number { get; private set; }
 
         public void Print()
         {

@@ -8,10 +8,10 @@ namespace MerchantGuide.Numeral
     /// <summary>
     ///     数字
     /// </summary>
-    public abstract class Numeral<T> : IPrintable where T : Digit
+    public abstract class Numeral<TDigit> : IPrintable where TDigit : Digit.Digit
     {
         public const string Zero = "Zero";
-        protected readonly IList<T> Digits = new List<T>();
+        protected readonly IList<TDigit> Digits = new List<TDigit>();
 
         public int Length
         {
@@ -23,11 +23,11 @@ namespace MerchantGuide.Numeral
             Console.WriteLine(GetSymbolText() + " is " + GetValue());
         }
 
-        public abstract T GetDigit(string symbolText);
+        public abstract TDigit GetDigit(string symbolText);
 
-        public abstract T GetDigit(int value);
+        public abstract TDigit GetDigit(int value);
 
-        public Numeral<T> AddDigit(string symbolText)
+        public Numeral<TDigit> AddDigit(string symbolText)
         {
             var digit = GetDigit(symbolText);
             if (digit != null)
@@ -36,12 +36,12 @@ namespace MerchantGuide.Numeral
             }
             else
             {
-                throw new GetDigitException("Can not get digit from symbol text.");
+                throw new NumeralException("Can not get digit from symbol text.");
             }
             return this;
         }
 
-        public Numeral<T> AddDigit(int value)
+        public Numeral<TDigit> AddDigit(int value)
         {
             var digit = GetDigit(value);
             if (digit != null)
@@ -50,7 +50,7 @@ namespace MerchantGuide.Numeral
             }
             else
             {
-                throw new GetDigitException("Can not get digit from value.");
+                throw new NumeralException("Can not get digit from value.");
             }
             return this;
         }

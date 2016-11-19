@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using MerchantGuide.Exception;
 
-namespace MerchantGuide.Numeral
+namespace MerchantGuide.Digit
 {
     /// <summary>
     ///     数字位
@@ -24,7 +24,7 @@ namespace MerchantGuide.Numeral
             {
                 if (value < 0)
                 {
-                    throw new ValidateDigitException("Digit value should not be negative");
+                    throw new DigitException("Digit value should not be negative.");
                 }
                 _value = value;
             }
@@ -35,10 +35,10 @@ namespace MerchantGuide.Numeral
             get { return _symbolText; }
             set
             {
-                var regex = new Regex("([A-Za-z]+)");
+                var regex = new Regex("^([A-Za-z]+){1}$");
                 if (string.IsNullOrEmpty(value) || !regex.IsMatch(value))
                 {
-                    throw new ValidateDigitException("Digit symbol text can only contains English characters");
+                    throw new DigitException("Digit symbol text can contains English characters only.");
                 }
                 _symbolText = value;
             }

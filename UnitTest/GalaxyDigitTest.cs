@@ -1,4 +1,4 @@
-﻿using MerchantGuide.Numeral;
+﻿using MerchantGuide.Digit;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTest

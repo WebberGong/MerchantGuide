@@ -1,4 +1,4 @@
-﻿namespace MerchantGuide.Numeral
+﻿namespace MerchantGuide.Digit
 {
     /// <summary>
     ///     银河系数字符号

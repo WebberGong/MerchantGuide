@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using MerchantGuide.Commodity;
+using MerchantGuide.Digit;
 using MerchantGuide.Exception;
 using MerchantGuide.InputLine;
 using MerchantGuide.Numeral;

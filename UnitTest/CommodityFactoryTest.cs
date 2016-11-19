@@ -44,7 +44,7 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("Commodity price should not be negative", ex.Message);
+                Assert.AreEqual("Commodity price should not be negative.", ex.Message);
             }
         }
 
@@ -62,8 +62,8 @@ namespace UnitTest
         [TestMethod]
         public void CommodityFactory_Clear()
         {
-            var result1 = CommodityFactory.Instance.GetCommodity("Gold1");
-            var result2 = CommodityFactory.Instance.GetCommodity("Gold2");
+            var result1 = CommodityFactory.Instance.GetCommodity("GoldOne");
+            var result2 = CommodityFactory.Instance.GetCommodity("GoldTwo");
             CommodityFactory.Instance.Clear();
             Assert.IsTrue(CommodityFactory.Instance.Count == 0);
         }
@@ -79,8 +79,8 @@ namespace UnitTest
         public void CommodityFactory_Count_NotZero()
         {
             CommodityFactory.Instance.Clear();
-            var result1 = CommodityFactory.Instance.GetCommodity("Gold1");
-            var result2 = CommodityFactory.Instance.GetCommodity("Gold2");
+            var result1 = CommodityFactory.Instance.GetCommodity("GoldOne");
+            var result2 = CommodityFactory.Instance.GetCommodity("GoldTwo");
             Assert.IsTrue(CommodityFactory.Instance.Count == 2);
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace MerchantGuide.Numeral
+﻿namespace MerchantGuide.Digit
 {
     /// <summary>
     ///     阿拉伯数字符号

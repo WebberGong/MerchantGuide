@@ -1,16 +1,16 @@
-﻿using MerchantGuide.Numeral;
+﻿using MerchantGuide.Digit;
 
 namespace MerchantGuide.InputLine
 {
     /// <summary>
     ///     数字位设置条件
     /// </summary>
-    public class DigitCondition<T> : InputLine where T : Digit
+    public class DigitCondition<TDigit> : InputLine where TDigit : Digit.Digit
     {
-        private readonly DigitFactory<T> _factory;
+        private readonly DigitFactory<TDigit> _factory;
 
         public DigitCondition(string content, string originalSymbolText, string substitutiveSymbolText,
-            DigitFactory<T> factory)
+            DigitFactory<TDigit> factory)
             : base(content)
         {
             OriginalSymbolText = originalSymbolText;

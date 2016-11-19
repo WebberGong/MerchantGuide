@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using MerchantGuide.Commodity;
+using MerchantGuide.Digit;
 using MerchantGuide.Exception;
 using MerchantGuide.InputLine;
 using MerchantGuide.Numeral;
@@ -38,7 +39,7 @@ namespace MerchantGuide.InputLineParser
         {
             get
             {
-                var commodityConditionRegex = new Regex("^\\s*([A-Za-z]+\\s+)+\\s*is\\s+(\\d+)\\s+Credits\\s*$");
+                var commodityConditionRegex = new Regex("^\\s*([A-Za-z]+\\s+){2,}\\s*is\\s+(\\d+)\\s+Credits\\s*$");
                 return commodityConditionRegex;
             }
         }

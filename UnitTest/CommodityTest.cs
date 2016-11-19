@@ -23,7 +23,7 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("Commodity name can only contains English characters.", ex.Message);
+                Assert.AreEqual("Commodity name can contains English characters only.", ex.Message);
             }
         }
 
@@ -36,7 +36,7 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("Commodity name can only contains English characters.", ex.Message);
+                Assert.AreEqual("Commodity name can contains English characters only.", ex.Message);
             }
         }
 
@@ -49,7 +49,7 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("Commodity name can only contains English characters", ex.Message);
+                Assert.AreEqual("Commodity name can contains English characters only.", ex.Message);
             }
         }
 
@@ -62,7 +62,7 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("Commodity name can only contains English characters", ex.Message);
+                Assert.AreEqual("Commodity name can contains English characters only.", ex.Message);
             }
         }
 
@@ -75,7 +75,7 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("Commodity name can only contains English characters", ex.Message);
+                Assert.AreEqual("Commodity name can contains English characters only.", ex.Message);
             }
         }
 
@@ -95,7 +95,7 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("Commodity price should not be negative", ex.Message);
+                Assert.AreEqual("Commodity price should not be negative.", ex.Message);
             }
         }
     }

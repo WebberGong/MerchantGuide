@@ -1,21 +1,21 @@
 ﻿using System;
 
-namespace MerchantGuide.Numeral
+namespace MerchantGuide.Digit
 {
     /// <summary>
-    ///     阿拉伯数字位工厂
+    ///     银河系数字位工厂
     /// </summary>
-    public class ArabDigitFactory : DigitFactory<ArabDigit>
+    public class GalaxyDigitFactory : DigitFactory<GalaxyDigit>
     {
-        private static ArabDigitFactory _instance;
+        private static GalaxyDigitFactory _instance;
         private static readonly object Locker = new object();
 
-        private ArabDigitFactory()
+        private GalaxyDigitFactory()
         {
             Initialize();
         }
 
-        public static ArabDigitFactory Instance
+        public static GalaxyDigitFactory Instance
         {
             get
             {
@@ -25,7 +25,7 @@ namespace MerchantGuide.Numeral
                     {
                         if (_instance == null)
                         {
-                            _instance = new ArabDigitFactory();
+                            _instance = new GalaxyDigitFactory();
                         }
                     }
                 }
@@ -35,15 +35,13 @@ namespace MerchantGuide.Numeral
 
         public sealed override void Initialize()
         {
-            Clear();
-
-            var symbolTexts = Enum.GetNames(typeof (ArabSymbol));
+            var symbolTexts = Enum.GetNames(typeof (GalaxySymbol));
             foreach (var symbolText in symbolTexts)
             {
-                ArabSymbol symbol;
+                GalaxySymbol symbol;
                 if (Enum.TryParse(symbolText, out symbol))
                 {
-                    AddDigit(new ArabDigit(symbol));
+                    AddDigit(new GalaxyDigit(symbol));
                 }
             }
         }

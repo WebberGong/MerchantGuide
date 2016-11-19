@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MerchantGuide.Digit;
 using MerchantGuide.Exception;
 
 namespace MerchantGuide.Numeral
@@ -20,7 +21,7 @@ namespace MerchantGuide.Numeral
 
         public override int GetValue()
         {
-            IDictionary<int, int> repeatCountDic = new Dictionary<int, int>();
+            IDictionary<int, int> repeatCountDictionary = new Dictionary<int, int>();
             GalaxyDigit previous = null;
             var value = 0;
             foreach (var item in Digits)
@@ -30,15 +31,15 @@ namespace MerchantGuide.Numeral
                 {
                     if (previous.Value > current.Value)
                     {
-                        SetValueIfPreviousIsGreaterThanCurrent(repeatCountDic, previous, current, ref value);
+                        SetValueIfPreviousIsGreaterThanCurrent(repeatCountDictionary, previous, current, ref value);
                     }
                     else if (previous.Value == current.Value)
                     {
-                        SetValueIfPreviousIsEqualToCurrent(repeatCountDic, previous, current, ref value);
+                        SetValueIfPreviousIsEqualToCurrent(repeatCountDictionary, previous, current, ref value);
                     }
                     else
                     {
-                        SetValueIfPreviousIsLessThanCurrent(repeatCountDic, previous, current, ref value);
+                        SetValueIfPreviousIsLessThanCurrent(repeatCountDictionary, previous, current, ref value);
                     }
                 }
                 else
@@ -51,48 +52,48 @@ namespace MerchantGuide.Numeral
         }
 
         private void SetValueIfPreviousIsGreaterThanCurrent(
-            IDictionary<int, int> repeatCountDic, GalaxyDigit previous, GalaxyDigit current, ref int value)
+            IDictionary<int, int> repeatCountDictionary, GalaxyDigit previous, GalaxyDigit current, ref int value)
         {
             value += current.Value;
-            if (repeatCountDic.ContainsKey(previous.Value))
+            if (repeatCountDictionary.ContainsKey(previous.Value))
             {
-                repeatCountDic.Remove(previous.Value);
+                repeatCountDictionary.Remove(previous.Value);
             }
         }
 
         private void SetValueIfPreviousIsEqualToCurrent(
-            IDictionary<int, int> repeatCountDic, GalaxyDigit previous, GalaxyDigit current, ref int value)
+            IDictionary<int, int> repeatCountDictionary, GalaxyDigit previous, GalaxyDigit current, ref int value)
         {
             if (previous.CanBeRepeated && current.CanBeRepeated)
             {
-                if (repeatCountDic.ContainsKey(current.Value))
+                if (repeatCountDictionary.ContainsKey(current.Value))
                 {
-                    repeatCountDic[current.Value]++;
+                    repeatCountDictionary[current.Value]++;
                 }
                 else
                 {
-                    repeatCountDic.Add(current.Value, 2);
+                    repeatCountDictionary.Add(current.Value, 2);
                 }
-                if (repeatCountDic[current.Value] < 4)
+                if (repeatCountDictionary[current.Value] < 4)
                 {
                     value += current.Value;
                 }
                 else
                 {
-                    throw new ValidateNumeralException("The digit '" + current.SymbolText +
-                                                       "' should not be repeated more than 3 times");
+                    throw new NumeralException("The digit '" + current.SymbolText +
+                                               "' should not be repeated more than 3 times.");
                 }
             }
             else
             {
-                throw new ValidateNumeralException("The digit '" + current.SymbolText + "' should not be repeated");
+                throw new NumeralException("The digit '" + current.SymbolText + "' should not be repeated.");
             }
         }
 
         private void SetValueIfPreviousIsLessThanCurrent(
-            IDictionary<int, int> repeatCountDic, GalaxyDigit previous, GalaxyDigit current, ref int value)
+            IDictionary<int, int> repeatCountDictionary, GalaxyDigit previous, GalaxyDigit current, ref int value)
         {
-            if (!repeatCountDic.ContainsKey(previous.Value))
+            if (!repeatCountDictionary.ContainsKey(previous.Value))
             {
                 if (previous.CanBeSubtracted)
                 {
@@ -103,20 +104,20 @@ namespace MerchantGuide.Numeral
                     }
                     else
                     {
-                        throw new ValidateNumeralException("The digit '" + previous.SymbolText +
-                                                           "' should not be subtracted between more than one order of magnitude");
+                        throw new NumeralException("The digit '" + previous.SymbolText +
+                                                   "' should not be subtracted between more than one order of magnitude.");
                     }
                 }
                 else
                 {
-                    throw new ValidateNumeralException("The digit '" + previous.SymbolText +
-                                                       "' should not be subtracted");
+                    throw new NumeralException("The digit '" + previous.SymbolText +
+                                               "' should not be subtracted.");
                 }
             }
             else
             {
-                throw new ValidateNumeralException("The digit '" + current.SymbolText +
-                                                   "' should not greater than the previous digit if the previous digit was repeated");
+                throw new NumeralException("The digit '" + current.SymbolText +
+                                           "' should not greater than the previous digit if the previous digit was repeated.");
             }
         }
     }

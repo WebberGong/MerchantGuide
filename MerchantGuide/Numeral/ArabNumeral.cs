@@ -1,4 +1,5 @@
 ﻿using System;
+using MerchantGuide.Digit;
 using MerchantGuide.Exception;
 
 namespace MerchantGuide.Numeral
@@ -32,7 +33,7 @@ namespace MerchantGuide.Numeral
                     }
                     else
                     {
-                        throw new ValidateNumeralException("Arab numeral can not started with zero.");
+                        throw new NumeralException("Arab numeral can not started with zero.");
                     }
                 }
                 else

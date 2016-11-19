@@ -24,10 +24,10 @@ namespace MerchantGuide.Commodity
             get { return _name; }
             private set
             {
-                var regex = new Regex("([A-Za-z]+)");
+                var regex = new Regex("^([A-Za-z]+){1}$");
                 if (string.IsNullOrEmpty(value) || !regex.IsMatch(value))
                 {
-                    throw new ValidateCommodityException("Commodity name can only contains English characters");
+                    throw new CommodityException("Commodity name can contains English characters only.");
                 }
                 _name = value;
             }
@@ -40,7 +40,7 @@ namespace MerchantGuide.Commodity
             {
                 if (value < 0m)
                 {
-                    throw new ValidateCommodityException("Commodity price should not be negative");
+                    throw new CommodityException("Commodity price should not be negative.");
                 }
                 _price = value;
             }

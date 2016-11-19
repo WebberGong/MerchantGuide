@@ -1,7 +1,6 @@
-﻿using System;
+﻿using MerchantGuide.Digit;
 using MerchantGuide.InputLine;
 using MerchantGuide.InputLineParser;
-using MerchantGuide.Numeral;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTest
@@ -76,62 +75,31 @@ namespace UnitTest
         [TestMethod]
         public void GalaxyInputParser_Parse_Failed()
         {
-            var parseFailed = "I have no idea what you are talking about";
-
-            try
+            var inputLine = GalaxyInputLineParser.Instance.Parse("glob is I");
+            var digitCondition = inputLine as DigitCondition<GalaxyDigit>;
+            if (digitCondition != null)
             {
-                var inputLine = GalaxyInputLineParser.Instance.Parse(
-                    "how much wood could a woodchuck chuck if a woodchuck could chuck wood");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(parseFailed, ex.Message);
+                digitCondition.Process();
             }
 
-            try
-            {
-                var inputLine = GalaxyInputLineParser.Instance.Parse("glob 123 is I");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(parseFailed, ex.Message);
-            }
+            inputLine = GalaxyInputLineParser.Instance.Parse(
+                "how much wood could a woodchuck chuck if a woodchuck could chuck wood");
+            Assert.AreEqual(inputLine.GetType(), typeof (UnrecognizedInputLine));
 
-            try
-            {
-                var inputLine = GalaxyInputLineParser.Instance.Parse("glob glob is 34 Credits");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(parseFailed, ex.Message);
-            }
+            inputLine = GalaxyInputLineParser.Instance.Parse("glob 123 is I");
+            Assert.AreEqual(inputLine.GetType(), typeof (UnrecognizedInputLine));
 
-            try
-            {
-                var inputLine = GalaxyInputLineParser.Instance.Parse("how much is glob 123 glob ?");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(parseFailed, ex.Message);
-            }
+            inputLine = GalaxyInputLineParser.Instance.Parse("glob is 34 Credits");
+            Assert.AreEqual(inputLine.GetType(), typeof (UnrecognizedInputLine));
 
-            try
-            {
-                var inputLine = GalaxyInputLineParser.Instance.Parse("how many Credits is glob glob glob Silver 123 ?");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(parseFailed, ex.Message);
-            }
+            inputLine = GalaxyInputLineParser.Instance.Parse("how much is glob 123 glob ?");
+            Assert.AreEqual(inputLine.GetType(), typeof (UnrecognizedInputLine));
 
-            try
-            {
-                var inputLine = GalaxyInputLineParser.Instance.Parse("how many Credits is glob * glob glob Silver?");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(parseFailed, ex.Message);
-            }
+            inputLine = GalaxyInputLineParser.Instance.Parse("how many Credits is glob glob glob Silver 123 ?");
+            Assert.AreEqual(inputLine.GetType(), typeof (UnrecognizedInputLine));
+
+            inputLine = GalaxyInputLineParser.Instance.Parse("how many Credits is glob * glob glob Silver?");
+            Assert.AreEqual(inputLine.GetType(), typeof (UnrecognizedInputLine));
         }
     }
 }

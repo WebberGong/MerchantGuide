@@ -9,7 +9,7 @@ namespace MerchantGuide.Commodity
     {
         private static CommodityFactory _instance;
         private static readonly object Locker = new object();
-        private readonly IDictionary<string, Commodity> _commodities = new Dictionary<string, Commodity>();
+        private readonly IDictionary<string, Commodity> _commoditieDictionary = new Dictionary<string, Commodity>();
 
         private CommodityFactory()
         {
@@ -35,17 +35,17 @@ namespace MerchantGuide.Commodity
 
         public int Count
         {
-            get { return _commodities.Count; }
+            get { return _commoditieDictionary.Count; }
         }
 
         public Commodity GetCommodity(string name)
         {
-            if (_commodities.ContainsKey(name))
+            if (_commoditieDictionary.ContainsKey(name))
             {
-                return _commodities[name];
+                return _commoditieDictionary[name];
             }
             var commodity = new Commodity(name, default(decimal));
-            _commodities.Add(name, commodity);
+            _commoditieDictionary.Add(name, commodity);
             return commodity;
         }
 
@@ -57,7 +57,7 @@ namespace MerchantGuide.Commodity
 
         public void Clear()
         {
-            _commodities.Clear();
+            _commoditieDictionary.Clear();
         }
     }
 }

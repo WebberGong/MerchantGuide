@@ -1,20 +1,19 @@
-﻿using MerchantGuide.Numeral;
-using MerchantGuide.Transaction;
+﻿using MerchantGuide.Transaction;
 
 namespace MerchantGuide.InputLine
 {
     /// <summary>
     ///     交易问题
     /// </summary>
-    public class TransactionQuestion<T> : InputLine where T : Digit
+    public class TransactionQuestion<TDigit> : InputLine where TDigit : Digit.Digit
     {
-        public TransactionQuestion(string content, Transaction<T> transaction)
+        public TransactionQuestion(string content, Transaction<TDigit> transaction)
             : base(content)
         {
             Transaction = transaction;
         }
 
-        public Transaction<T> Transaction { get; private set; }
+        public Transaction<TDigit> Transaction { get; private set; }
 
         public override void Process()
         {
