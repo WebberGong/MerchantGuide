@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTest
 {
     [TestClass]
-    public class GalaxyInputParserTest : TestBase
+    public class GalaxyInputLineParserTest : TestBase
     {
         [TestMethod]
         public void GalaxyInputParser_Parse_Normal()
@@ -16,7 +16,7 @@ namespace UnitTest
             var digitCondition = inputLine as DigitCondition<GalaxyDigit>;
             if (digitCondition != null)
             {
-                digitCondition.Excute();
+                digitCondition.Process();
             }
             Assert.IsTrue(digitCondition != null && digitCondition.OriginalSymbolText == "I" &&
                           digitCondition.SubstitutiveSymbolText == "glob");
@@ -25,7 +25,7 @@ namespace UnitTest
             var commodityCondition = inputLine as CommodityCondition;
             if (commodityCondition != null)
             {
-                commodityCondition.Excute();
+                commodityCondition.Process();
             }
             Assert.IsTrue(commodityCondition != null && commodityCondition.CommodityName == "Silver" &&
                           commodityCondition.Number == 2 && commodityCondition.TotalAmount == 34);
@@ -44,7 +44,7 @@ namespace UnitTest
             digitCondition = inputLine as DigitCondition<GalaxyDigit>;
             if (digitCondition != null)
             {
-                digitCondition.Excute();
+                digitCondition.Process();
             }
             Assert.IsTrue(digitCondition != null && digitCondition.OriginalSymbolText == "I" &&
                           digitCondition.SubstitutiveSymbolText == "glob");
@@ -53,7 +53,7 @@ namespace UnitTest
             commodityCondition = inputLine as CommodityCondition;
             if (commodityCondition != null)
             {
-                commodityCondition.Excute();
+                commodityCondition.Process();
             }
             Assert.IsTrue(commodityCondition != null && commodityCondition.CommodityName == "Silver" &&
                           commodityCondition.Number == 2 && commodityCondition.TotalAmount == 34);

@@ -21,7 +21,7 @@ namespace MerchantGuide.InputLine
 
         public decimal TotalAmount { get; private set; }
 
-        public override void Excute()
+        public override void Process()
         {
             CommodityFactory.Instance.SetPrice(CommodityName, TotalAmount/Number);
         }

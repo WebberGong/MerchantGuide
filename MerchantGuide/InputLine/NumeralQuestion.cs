@@ -15,7 +15,7 @@ namespace MerchantGuide.InputLine
 
         public Numeral<T> Number { get; private set; }
 
-        public override void Excute()
+        public override void Process()
         {
             Number.Print();
         }

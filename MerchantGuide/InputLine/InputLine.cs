@@ -12,6 +12,6 @@
 
         public string Content { get; private set; }
 
-        public abstract void Excute();
+        public abstract void Process();
     }
 }

@@ -14,9 +14,9 @@ namespace MerchantGuide.Transaction
             Number = number;
         }
 
-        public Commodity.Commodity Commodity { get; set; }
+        public Commodity.Commodity Commodity { get; private set; }
 
-        public Numeral<T> Number { get; set; }
+        public Numeral<T> Number { get; private set; }
 
         public void Print()
         {

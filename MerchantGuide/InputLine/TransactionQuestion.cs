@@ -16,7 +16,7 @@ namespace MerchantGuide.InputLine
 
         public Transaction<T> Transaction { get; private set; }
 
-        public override void Excute()
+        public override void Process()
         {
             Transaction.Print();
         }

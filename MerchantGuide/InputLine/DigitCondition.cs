@@ -23,7 +23,7 @@ namespace MerchantGuide.InputLine
 
         public string SubstitutiveSymbolText { get; private set; }
 
-        public override void Excute()
+        public override void Process()
         {
             var digit = _factory.GetDigit(OriginalSymbolText);
             if (digit != null)

@@ -8,15 +8,14 @@ namespace MerchantGuide
     {
         private static void Main(string[] args)
         {
-            ParseInput("./Resource/GalaxyInput.txt", GalaxyInputLineParser.Instance, GalaxyDigitFactory.Instance);
+            ProcessInput("./Resource/GalaxyInput.txt", GalaxyInputLineParser.Instance);
             Console.WriteLine(new string('-', 40));
-            ParseInput("./Resource/ArabInput.txt", ArabInputLineParser.Instance, ArabDigitFactory.Instance);
+            ProcessInput("./Resource/ArabInput.txt", ArabInputLineParser.Instance);
 
             var read = Console.Read();
         }
 
-        private static void ParseInput<TDigit>(string inputPath, InputParser<TDigit> parser,
-            DigitFactory<TDigit> factory) where TDigit : Digit
+        private static void ProcessInput<TDigit>(string inputPath, InputParser<TDigit> parser) where TDigit : Digit
         {
             var inputLines = Utility.ReadTxt(inputPath);
             foreach (var txt in inputLines)
@@ -24,7 +23,7 @@ namespace MerchantGuide
                 try
                 {
                     var inputLine = parser.Parse(txt);
-                    inputLine.Excute();
+                    inputLine.Process();
                 }
                 catch (System.Exception ex)
                 {

@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="CommodityFactoryTest.cs" />
     <Compile Include="CommodityTest.cs" />
-    <Compile Include="GalaxyInputParserTest.cs" />
+    <Compile Include="GalaxyInputLineParserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GalaxyDigitTest.cs" />
     <Compile Include="GalaxyDigitFactoryTest.cs" />
