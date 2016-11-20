@@ -64,14 +64,10 @@
     <Compile Include="Exception\NumeralException.cs" />
     <Compile Include="InputLine\UnrecognizedInputLine.cs" />
     <Compile Include="Input\Input.cs" />
-    <Compile Include="Digit\ArabDigit.cs" />
     <Compile Include="InputLine\CommodityCondition.cs" />
     <Compile Include="Digit\Digit.cs" />
     <Compile Include="Commodity\CommodityFactory.cs" />
     <Compile Include="Digit\DigitFactory.cs" />
-    <Compile Include="Digit\ArabDigitFactory.cs" />
-    <Compile Include="Numeral\ArabNumeral.cs" />
-    <Compile Include="InputLineParser\ArabInputLineParser.cs" />
     <Compile Include="InputLineParser\InputLineParser.cs" />
     <Compile Include="InputLine\InputLine.cs" />
     <Compile Include="InputLineParser\GalaxyInputLineParser.cs" />
@@ -85,7 +81,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InputLine\DigitCondition.cs" />
-    <Compile Include="Digit\ArabSymbol.cs" />
     <Compile Include="Digit\GalaxySymbol.cs" />
     <Compile Include="Digit\GalaxyDigit.cs" />
     <Compile Include="Transaction\Transaction.cs" />
